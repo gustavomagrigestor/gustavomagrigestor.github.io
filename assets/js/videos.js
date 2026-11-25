@@ -1,0 +1,48 @@
+/* =========================================================
+   Vídeos do portfólio do Gustavo Magri (a ordem aqui é a ordem na página).
+   Para adicionar um vídeo novo, copie uma linha e troque:
+   - YouTube:  { tipo: "youtube", id: "ID_DO_VIDEO", titulo: "...", categoria: "..." }
+   - Arquivo:  vid("nome-do-arquivo", "Título", "categoria", false)   (false = horizontal; true = vertical)
+               o .mp4 e o -thumb.jpg vão em assets/videos/
+   - Design:   galeria("pasta", ["01-cover", "02-about"], "Título")
+               as imagens .jpg e o thumb.jpg vão em assets/design/pasta/
+   categoria: reels | youtube | documentary | motion | business | ai | design
+   ========================================================= */
+const X = "assets/videos/";
+const vid = (nome, titulo, categoria, vertical = true) => ({ tipo: "video", src: `${X}${nome}.mp4`, poster: `${X}${nome}-thumb.jpg`, vertical, titulo, categoria });
+const D = "assets/design/";
+const galeria = (pasta, paginas, titulo, categoria = "design") => ({ tipo: "galeria", imagens: paginas.map((p) => `${D}${pasta}/${p}.jpg`), poster: `${D}${pasta}/thumb.jpg`, titulo, categoria });
+
+const VIDEOS = [
+  vid("before-after-1", "Before and after: raw vs edited talking-head reel", "reels"),
+  vid("before-after-2", "Before and after: talking-head reel with motion graphics", "reels"),
+  vid("reformation-reel", "The Reformation, 1517: history reel with archive motion", "reels"),
+  vid("edison-reel", "Thomas Edison: history reel with kinetic text", "reels"),
+  vid("coffee-latte-recipe-motion", "Caffè Latte: animated recipe film (motion graphics, spec ad)", "motion"),
+  vid("candy-store-notifications-reel", "Candy store: phone notification motion reel (spec ad)", "motion"),
+  vid("vanta-sneaker-spec-ad", "VANTA running sneaker: AI product ad with motion graphics (spec ad)", "ai"),
+  vid("talking-head-reel-1", "Talking-head reel for social media", "reels"),
+  vid("talking-head-reel-2", "Podcast-style talking-head reel", "reels"),
+  vid("lake-tahoe-geography", "Lake Tahoe: geography YouTube video with 3D maps and motion graphics", "youtube", false),
+  vid("animated-psychology-explainer", "Hand-drawn animated psychology explainer for YouTube", "youtube", false),
+  vid("megalodon-documentary", "Megalodon: documentary edit with narration and sound design", "documentary", false),
+  vid("reformation-documentary", "The Protestant Reformation: historical documentary with archive motion", "documentary", false),
+  vid("edison-documentary", "Thomas Edison: then vs now documentary with motion graphics", "documentary", false),
+  vid("stalin-war-documentary", "WWII archive documentary: archival footage, narration and sound design", "documentary", false),
+  vid("paul-from-hunter-to-apostle", "Paul, from hunter to apostle: 2D animated history documentary", "motion", false),
+  vid("china-japan-war-motion-graphics", "China vs Japan 1937-1945: animated war map explainer", "motion", false),
+  vid("dinosaur-explainer", "Dinosaur extinction explainer: kinetic text, UI and 3D Earth", "motion", false),
+  vid("trex-documentary", "T. rex: documentary editing sample (real footage only)", "documentary", false),
+  vid("five-dollar-habit", "The 5 Dollar Habit: finance documentary", "documentary", false),
+  vid("minimum-payment-trap", "The Minimum Payment Trap: finance documentary", "documentary", false),
+  vid("vintage-war-documentary", "Archive documentary: vintage footage and sound design", "documentary", false),
+  { tipo: "youtube", id: "1Na6ipU6JEE", titulo: "Pompeii, 72 AD: documentary edit", categoria: "documentary" },
+  vid("grandpa-max-brake-scam", "Explainer animation: how a brake-pad upsell works (2D motion)", "motion", false),
+  vid("property-mailers-explainer", "Property Mailers: narrated product explainer with UI animation", "business", false),
+  vid("saas-launch-motion", "SaaS product launch: UI motion graphics (spec ad)", "motion", false),
+  vid("watch-ui-animation", "Watch specs: UI motion graphics", "motion", false),
+  vid("ai-perfume-ad", "AI product ad: perfume", "ai", false),
+  vid("ai-perfume-vertical-ad", "AI product ad: luxury perfume, vertical format", "ai"),
+  vid("ai-real-estate-tour", "AI real estate tour: modern house at sunset", "ai"),
+  galeria("harbor-pine", ["01-cover", "02-about", "03-logo", "04-colors", "05-typography", "06-photography"], "Harbor & Pine: brand guidelines in Canva (spec project)"),
+];
